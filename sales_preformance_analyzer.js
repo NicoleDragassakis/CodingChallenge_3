@@ -12,10 +12,10 @@ console.log(calculateAverageSales(salesFiguresMaddy)); // outputs 23.333
 let salesFiguresFrank = [20.00,30.00,40.00,50.00,60.00] //re-testing function
 console.log(calculateAverageSales(salesFiguresFrank)); //outputs 34
 
-//Task 2 Determine Preformance Rating
+//Task 2 Determine Performance Rating
 
-function determinePreformanceRating(averageSales){
-    let preformanceRating;
+function determinePerformanceRating(averageSales){
+    let performanceRating;
     if (averageSales > 10000.00 ) return "Excellent";
     else if (averageSales >= 7000.00 && averageSales <= 10000.00) return "Good";
     else if (averageSales >= 4000.00 && averageSales <= 70000.00) return "Satisfactory";
@@ -23,9 +23,9 @@ function determinePreformanceRating(averageSales){
 
 }
 let averageSalesFrank = (calculateAverageSales(salesFiguresFrank)); //define averageSales for frank
-console.log("Preformace Rating, Frank:", determinePreformanceRating(averageSalesFrank)); //outputs Needs improvement
+console.log("Performance Rating, Frank:", determinePerformanceRating(averageSalesFrank)); //outputs Needs improvement
 
-//Task 3 Develop findTopAndbottomPreformers function
+//Task 3 Develop findTopAndbottomPerformers function
 
 //This is to first find the total sales for each sales person
     let salesFiguresOlivia = [2000.00,300.00,40.00,5000.00,60.00]
@@ -48,7 +48,7 @@ const salesPeople = [
     {employee:"Maddy", totalSales: toFindTotalSales(salesFiguresMaddy)},
     {employee:"Olivia",totalSales: toFindTotalSales(salesFiguresOlivia)},
     {employee:"John", totalSales: toFindTotalSales(salesFiguresJohn)},
-    {employeee:"David", totalSales: toFindTotalSales(salesFiguresDavid)}
+    {employee:"David", totalSales: toFindTotalSales(salesFiguresDavid)}
 ];
 
 function findTopAndBottomPerformers(salesPeople){
@@ -61,8 +61,33 @@ let bottomPerformer = salesPeople.find(people => people.totalSales === minSales)
 return { topPerformer, bottomPerformer };
 }
 
-let{topPerformer, bottomPerformer } = findTopAndBottomPerformers(salesPeople); //calls on the function
+let{topPerformer, bottomPerformer}=findTopAndBottomPerformers(salesPeople); //calls on the function
 console.log("Top Performer:", topPerformer); //outputs david as the top performer with 11070 total sales
 console.log("Bottom Performer:",bottomPerformer);// outputs Maddy as the bottom performer with 140 total sales
 
+//Task 4 Generate a Performance Report
 
+
+function generatePerformanceReport(){
+    let report = salesPeople.map(people =>{
+     let averageSales =calculateAverageSales([people.totalSales]);//average sales for each employee
+     let performanceRating = determinePerformanceRating(averageSales); //determines performance rating for each employee
+     let{ topPerformer, bottomPerformer } = findTopAndBottomPerformers(salesPeople) //identifies top and bottom performers
+    
+   return{
+
+    name: people.employee,
+    averageSales,
+    performanceRating,
+   };
+    });
+    return {
+        report,
+        topPerformer,
+        bottomPerformer,
+
+    };
+}
+
+let performanceReport = generatePerformanceReport(); //calls on function
+console.log("Performance Report:", performanceReport); //outputs an array with bottom performer, top performer, and all employees average sales, performancerating, and name.
