@@ -72,7 +72,7 @@ function generatePerformanceReport(){
     let report = salesPeople.map(people =>{
      let averageSales =calculateAverageSales([people.totalSales]);//average sales for each employee
      let performanceRating = determinePerformanceRating(averageSales); //determines performance rating for each employee
-     let{ topPerformer, bottomPerformer } = findTopAndBottomPerformers(salesPeople) //identifies top and bottom performers
+     let { topPerformer, bottomPerformer } = findTopAndBottomPerformers(salesPeople) //identifies top and bottom performers
     
    return{
 
@@ -91,3 +91,15 @@ function generatePerformanceReport(){
 
 let performanceReport = generatePerformanceReport(); //calls on function
 console.log("Performance Report:", performanceReport); //outputs an array with bottom performer, top performer, and all employees average sales, performancerating, and name.
+
+//task 5 test functions
+
+//given dataset
+const salesData = [
+{ employee: 'Alice', totalSales:[12000, 15000, 13000] },
+{ employee: 'Bob', totalSales:[7000, 6000, 7500] },
+{ employee: 'Charlie', totalSales:[3000, 4000, 3500] },
+{ employee:'diana', totalSales:[9000, 8500, 9200] },
+];
+const performanceRating = generatePerformanceReport(salesData);
+console.log("Performance Report Group Two:", performanceRating);
