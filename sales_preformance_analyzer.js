@@ -101,5 +101,5 @@ const salesData = [
 { employee: 'Charlie', totalSales:[3000, 4000, 3500] },
 { employee:'diana', totalSales:[9000, 8500, 9200] },
 ];
-const performanceRating = generatePerformanceReport(salesData);
-console.log("Performance Report Group Two:", performanceRating);
+const performanceRating = generatePerformanceReport(salesData); //inserts the salesData into the function that generates the performance report
+console.log("Performance Report Group Two:", performanceRating); //outputs the performance report for gorup 2 which is the given data set
